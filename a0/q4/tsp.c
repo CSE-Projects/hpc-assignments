@@ -3,7 +3,7 @@
 #include <time.h>
 #include <limits.h>
 
-#define N 10
+#define N 12
 
 int distance[N][N], nodes_visited[N];
 
