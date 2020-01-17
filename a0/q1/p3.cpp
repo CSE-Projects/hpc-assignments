@@ -35,6 +35,9 @@ VOID Instruction(INS ins, VOID *v)
 	}
 }
 
+KNOB<string> KnobOutputFile(KNOB_MODE_WRITEONCE, "pintool",
+    "o", "p3.out", "specify output file name");
+
 // This function is called when the application exits
 VOID Fini(INT32 code, VOID *v)
 {
@@ -55,6 +58,8 @@ int main(int argc, char * argv[])
 {
     // Initialize pin
     if (PIN_Init(argc, argv)) return Usage();
+
+    OutFile.open(KnobOutputFile.Value().c_str());
 
     // Register Instruction to be called to instrument instructions
     INS_AddInstrumentFunction(Instruction, 0);

@@ -1,11 +1,13 @@
 #include <iostream>
 #include <fstream>
 #include "pin.H"
+
 using std::cerr;
 using std::ofstream;
 using std::ios;
 using std::string;
 using std::endl;
+using std::cout;
 
 ofstream OutFile;
 
@@ -16,7 +18,11 @@ static UINT64 loads = 0;
 // count of total number of stores
 static UINT64 stores = 0;
 // count of total number of branches
-static UINT64 branch_Ins_Count = 0;
+static UINT64 branch_ins_count = 0;
+// count of total number of int ins
+static UINT64 int_ins_count = 0;
+// count of total number of float ins
+static UINT64 float_ins_count = 0;
 
 // This function is called before every instruction that is executed
 VOID dynamicInsCount() { ++ins_count; }
@@ -25,7 +31,13 @@ VOID dynamicInsCount() { ++ins_count; }
 VOID countLoads() { ++loads; }
 
 // This function is called before every store 
-VOID countStores() { ++loads; }
+VOID countStores() { ++stores; }
+
+// This function is called before every int ins 
+VOID intInsCount() { ++int_ins_count; }
+
+// This function is called before every float ins 
+VOID floatInsCount() { ++float_ins_count; }
 
 // This function is called before every branch ins 
 VOID branchInsCount() { ++branch_ins_count; }
@@ -36,7 +48,7 @@ VOID Instruction(INS ins, VOID *v)
 	// for dynamic instruction count
 	INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR)dynamicInsCount, IARG_END);
 
-	fprintf(trace, "==> %s\n", CATEGORY_StringShort(INS_Category(ins)));
+	// cout<<CATEGORY_StringShort(INS_Category(ins)) << endl;
 	
 	// for loads
 	if (INS_IsMemoryRead(ins)) {
@@ -48,23 +60,40 @@ VOID Instruction(INS ins, VOID *v)
 		INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR)countStores, IARG_END);
 	}
 
+	// for int ins
+	if (INS_Category(ins) == XED_CATEGORY_BINARY || INS_Category(ins) == XED_CATEGORY_LOGICAL) {
+		INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR)intInsCount, IARG_END);
+	}
+
+	// for float insb
+	if (INS_Category(ins) == XED_CATEGORY_X87_ALU) {
+		INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR)floatInsCount, IARG_END);
+	}
+
 	// for branch instructions
 	if (INS_IsBranch(ins)) {
 		INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR)branchInsCount, IARG_END);
 	}
 }
 
+KNOB<string> KnobOutputFile(KNOB_MODE_WRITEONCE, "pintool",
+    "o", "p2.out", "specify output file name");
+
 // This function is called when the application exits
 VOID Fini(INT32 code, VOID *v)
 {
     OutFile.setf(ios::showbase);
-    OutFile << "Dynamic Instruction Count: " << icount << endl;
+    OutFile << "Dynamic Instruction Count: " << ins_count << endl;
 
-	OutFile << "Total Loads: " << lcount << endl;
+	OutFile << "Total Loads: " << loads << endl;
 
-	OutFile << "Total Stores: " << scount << endl;
+	OutFile << "Total Stores: " << stores << endl;
 
-	OutFile << "Branch Instruction Count: " << bcount << endl;
+	OutFile << "Integer Instruction Count: " << int_ins_count << endl;
+
+	OutFile << "Float Instruction Count: " << float_ins_count << endl;
+
+	OutFile << "Branch Instruction Count: " << branch_ins_count << endl;
 
     OutFile.close();
 }
@@ -80,6 +109,8 @@ int main(int argc, char * argv[])
 {
     // Initialize pin
     if (PIN_Init(argc, argv)) return Usage();
+
+	OutFile.open(KnobOutputFile.Value().c_str());
 
     // Register Instruction to be called to instrument instructions
     INS_AddInstrumentFunction(Instruction, 0);

@@ -5,12 +5,12 @@
 
 #define INF 100000
 
-const int n = 4;
+const int n = 3;
 
 int main() {
-    srand(1);
 
-    long double cur_lambda, b[n], v[n], m[n][n];
+    srand(1);
+    double cur_lambda, b[n], v[n], m[n][n];
 
     for(int i = 0; i < n; ++i) {
     
@@ -19,22 +19,22 @@ int main() {
     
         for(int j = i; j < n; ++j) {
             int random = (rand() % INF) + 1;
-
+    
             // random [0, 1]
             m[i][j] = m[j][i] = 1.0 / random;
         }
     }
 
     // Print matrix
-    // for(int i = 0; i < n; ++i) {
-    //     for(int j = 0; j < n; ++j) {
-    //         printf("%Lf ", m[i][j]);
-    //     }
-    //     printf("\n");
-    // }
+    for(int i = 0; i < n; ++i) {
+        for(int j = 0; j < n; ++j) {
+            printf("%lf ", m[i][j]);
+        }
+        printf("\n");
+    }
 
     // cur_lambda
-    long double sum = 0;
+    double sum = 0;
     for(int i = 0; i < n; ++i) {
         sum += b[i] * b[i];
     }
@@ -44,7 +44,7 @@ int main() {
     }
     for(int i = 0; i < n; ++i) {
         
-        long double addition = 0;
+        double addition = 0;
         
         for(int j = 0; j < n; ++j) {
             // addition += m[j][i] * v[j]; 
@@ -55,19 +55,20 @@ int main() {
     }
 
     while(1) {
-        long double new_lambda;
+        double new_lambda;
 
-        long double add = 0;
+        double add = 0;
         for(int i = 0; i < n; ++i) {
             add += b[i] * b[i];
         }
         new_lambda = sqrtl(add);
+        
         for(int i = 0; i < n; ++i) {
             v[i] = b[i] / new_lambda;
         }
         for(int i = 0; i < n; ++i) {
             
-            long double addition = 0;
+            double addition = 0;
             
             for(int j = 0; j < n; ++j) {
                 // addition += m[j][i] * v[j];  
@@ -85,7 +86,7 @@ int main() {
         }
     }
 
-    printf("%Lf", cur_lambda);
+    printf("%lf", cur_lambda);
 
     return 0;
 }

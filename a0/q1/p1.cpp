@@ -13,13 +13,13 @@ ofstream OutFile;
 // static UINT64 ins_count = 0;
 
 // This function is called before every instruction that is executed
-VOID dynamicInsTrace(VOID * ip) { fprintf(trace, "==> %p\n", addr); }
+VOID dynamicInsTrace(VOID * ip) { OutFile << "==> " << ip << endl; }
 
 // Print a memory read record
-VOID memTraceRead(VOID * addr) { fprintf(trace, "Read %p\n", addr); }
+VOID memTraceRead(VOID * addr) { OutFile << "Read " << addr << endl; }
 
 // Print a memory write record
-VOID memTraceWrite(VOID * addr) { fprintf(trace, "Write %p\n", addr); }
+VOID memTraceWrite(VOID * addr) { OutFile << "Write " << addr <<endl; }
 
 // Pin calls this function every time a new instruction is encountered
 VOID Instruction(INS ins, VOID *v)
@@ -75,16 +75,17 @@ VOID ImageLoad(IMG img, VOID *v)
 			RTN_Close(rtn);
 		}
 	}
-	fprintf(stderr, "Image %s has  %d instructions\n", IMG_Name(img).c_str(), count);
+	OutFile << "Image " << IMG_Name(img).c_str() << " has " << count << " instructions\n";
 }
 
+KNOB<string> KnobOutputFile(KNOB_MODE_WRITEONCE, "pintool",
+    "o", "p1.out", "specify output file name");
+
 // This function is called when the application exits
-// VOID Fini(INT32 code, VOID *v)
-// {
-//     OutFile.setf(ios::showbase);
-//     OutFile << "Instruction Count: " << icount << endl;
-//     OutFile.close();
-// }
+VOID Fini(INT32 code, VOID *v)
+{
+    OutFile.close();
+}
 
 INT32 Usage()
 {
@@ -97,6 +98,9 @@ int main(int argc, char * argv[])
 {
     // Initialize pin
     if (PIN_Init(argc, argv)) return Usage();
+
+	OutFile.open(KnobOutputFile.Value().c_str());
+    OutFile.setf(ios::showbase);
 
     // Register Instruction to be called to instrument instructions
     INS_AddInstrumentFunction(Instruction, 0);

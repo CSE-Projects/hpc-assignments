@@ -17,7 +17,7 @@ using std::cout;
 ofstream OutFile;
 
 // counts total number of read after write (RAW) dependency
-static UINT64 rawcount = 0;
+static UINT64 raw_count = 0;
 // counts of number of write after read (WAR) dependency
 static UINT64 war_count = 0;
 // counts of number of write after write (WAW) dependency
@@ -84,6 +84,9 @@ VOID Instruction(INS ins, VOID *v)
     }	
 }
 
+KNOB<string> KnobOutputFile(KNOB_MODE_WRITEONCE, "pintool",
+    "o", "p4.out", "specify output file name");
+
 // This function is called when the application exits
 VOID Fini(INT32 code, VOID *v)
 {
@@ -108,6 +111,8 @@ int main(int argc, char * argv[])
 {
     // Initialize pin
     if (PIN_Init(argc, argv)) return Usage();
+
+	OutFile.open(KnobOutputFile.Value().c_str());
 
     // Register Instruction to be called to instrument instructions
     INS_AddInstrumentFunction(Instruction, 0);

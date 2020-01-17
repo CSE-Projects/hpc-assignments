@@ -3,7 +3,7 @@
 #include <time.h>
 #include <limits.h>
   
-#define N 10
+#define N 15
 
 int visited[N][N], dp[N][N];
 

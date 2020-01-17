@@ -3,7 +3,7 @@
 #include <time.h>
 #include <limits.h>
   
-const int n = 10;
+#define N 15
 
 int matrixChainRecursive(int array[], int low, int high) { 
     if(low == high) { 
@@ -26,10 +26,11 @@ int matrixChainRecursive(int array[], int low, int high) {
   
 int main() {
     srand(1);
-    int array[n];
-    for(int i = 0; i < n; ++i) {
+
+    int array[N];
+    for(int i = 0; i < N; ++i) {
         array[i] = rand() % 100;
     }
-    printf("Operations required: %d\n", matrixChainRecursive(array, 0, n-2));
+    printf("Operations required: %d\n", matrixChainRecursive(array, 0, N-2));
     return 0; 
 } 

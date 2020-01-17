@@ -35,6 +35,7 @@ int main() {
     printf("Number of Cities: %d\n", N);
     
     for(int i = 0; i < N; ++i) {
+        nodes_visited[i] = 0;
         for(int j = 0; j < N; ++j) {
             if(i == j) distance[i][j] = 0;
             else distance[i][j] = rand() % 100 + 1;
