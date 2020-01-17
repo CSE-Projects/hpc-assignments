@@ -40,7 +40,7 @@ int main()
 	float arr[] = {6.4, 25.5, 25.6, 2.5, 2.3, 1, 0.5}; 
 	int n = sizeof(arr)/sizeof(arr[0]); 
 	selectionSort(arr, n); 
-	printf("Sorted array: \n"); 
+	printf("Selection sort, sorted array: \n"); 
 	printArray(arr, n); 
 	return 0; 
 } 

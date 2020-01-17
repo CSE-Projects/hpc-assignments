@@ -89,8 +89,8 @@ int main()
     int arr_size = sizeof(arr)/sizeof(arr[0]); 
   
     mergeSort(arr, 0, arr_size - 1); 
-  
-    printf("Sorted array is \n"); 
+    
+	printf("Merge sort, sorted array: \n"); 
     printArray(arr, arr_size); 
     return 0; 
 } 
