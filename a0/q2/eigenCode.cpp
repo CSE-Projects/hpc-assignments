@@ -3,29 +3,32 @@
 #include <time.h>
 #include <math.h>
 
-const int n = 1000;
+#define INF 100000
+
+const int n = 4;
 
 int main() {
     srand(1);
 
-    int m[n][n];
-    long double cur_lambda, b[n], v[n];
+    long double cur_lambda, b[n], v[n], m[n][n];
 
     for(int i = 0; i < n; ++i) {
     
-        int random_b = rand() % n;
+        int random_b = rand() % INF;
         b[i] = random_b;
     
         for(int j = i; j < n; ++j) {
-            int random = rand() % 2;
-            m[i][j] = m[j][i] = random;
+            int random = (rand() % INF) + 1;
+
+            // random [0, 1]
+            m[i][j] = m[j][i] = 1.0 / random;
         }
     }
 
     // Print matrix
     // for(int i = 0; i < n; ++i) {
     //     for(int j = 0; j < n; ++j) {
-    //         printf("%d ", m[i][j]);
+    //         printf("%Lf ", m[i][j]);
     //     }
     //     printf("\n");
     // }
@@ -35,7 +38,7 @@ int main() {
     for(int i = 0; i < n; ++i) {
         sum += b[i] * b[i];
     }
-    cur_lambda = sqrt(sum);
+    cur_lambda = sqrtl(sum);
     for(int i = 0; i < n; ++i) {
         v[i] = b[i] / cur_lambda;
     }
@@ -58,7 +61,7 @@ int main() {
         for(int i = 0; i < n; ++i) {
             add += b[i] * b[i];
         }
-        new_lambda = sqrt(add);
+        new_lambda = sqrtl(add);
         for(int i = 0; i < n; ++i) {
             v[i] = b[i] / new_lambda;
         }
