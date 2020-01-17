@@ -7,7 +7,7 @@
 
 int visited[N][N], dp[N][N];
 
-int matrixChainRecursive(int array[], int low, int high) { 
+int matrixChainDP(int array[], int low, int high) { 
     if(visited[low][high] != 0) {
         return dp[low][high];
     }
@@ -19,8 +19,8 @@ int matrixChainRecursive(int array[], int low, int high) {
 
     // low-i & i+1-high
     for(int i = low; i+1 <= high; ++i) { 
-        int cur_value = matrixChainRecursive(array, low, i) +  
-                        matrixChainRecursive(array, i+1, high) + 
+        int cur_value = matrixChainDP(array, low, i) +  
+                        matrixChainDP(array, i+1, high) + 
                         array[low]*array[i+1]*array[high+1]; 
         if (cur_value < ret) { 
             ret = cur_value; 
@@ -41,6 +41,6 @@ int main() {
             visited[i][j] = 0;
         }
     }
-    printf("Operations required: %d\n", matrixChainRecursive(array, 0, N-2));
+    printf("Operations required: %d\n", matrixChainDP(array, 0, N-2));
     return 0; 
 } 
