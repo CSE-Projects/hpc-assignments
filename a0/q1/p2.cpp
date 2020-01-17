@@ -36,6 +36,8 @@ VOID Instruction(INS ins, VOID *v)
 	// for dynamic instruction count
 	INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR)dynamicInsCount, IARG_END);
 
+	fprintf(trace, "==> %s\n", CATEGORY_StringShort(INS_Category(ins)));
+	
 	// for loads
 	if (INS_IsMemoryRead(ins)) {
 		INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR)countLoads, IARG_END);
