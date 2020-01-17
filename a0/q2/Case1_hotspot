@@ -1,0 +1,179 @@
+--------------------------------------------------------------------------------
+Profile data file 'callgrind.out.16310' (creator: callgrind-3.13.0)
+--------------------------------------------------------------------------------
+I1 cache: 
+D1 cache: 
+LL cache: 
+Timerange: Basic block 0 - 111207
+Trigger: Program termination
+Profiled target:  ./a.out (PID 16310, part 1)
+Events recorded:  Ir
+Events shown:     Ir
+Event sort order: Ir
+Thresholds:       99
+Include dirs:     
+User annotated:   eigenCode.c
+Auto-annotation:  off
+
+--------------------------------------------------------------------------------
+       Ir 
+--------------------------------------------------------------------------------
+1,112,548  PROGRAM TOTALS
+
+--------------------------------------------------------------------------------
+     Ir  file:function
+--------------------------------------------------------------------------------
+812,752  eigenCode.c:main [/home/dibyadarshan/Desktop/HPC/hpc-assignments/a0/q2/a.out]
+ 59,305  /build/glibc-OTsEL5/glibc-2.27/elf/dl-addr.c:_dl_addr [/lib/x86_64-linux-gnu/libc-2.27.so]
+ 35,691  /build/glibc-OTsEL5/glibc-2.27/stdlib/random_r.c:random_r [/lib/x86_64-linux-gnu/libc-2.27.so]
+ 34,053  /build/glibc-OTsEL5/glibc-2.27/elf/dl-lookup.c:do_lookup_x [/lib/x86_64-linux-gnu/ld-2.27.so]
+ 29,150  /build/glibc-OTsEL5/glibc-2.27/stdlib/random.c:random [/lib/x86_64-linux-gnu/libc-2.27.so]
+ 23,222  /build/glibc-OTsEL5/glibc-2.27/elf/dl-tunables.c:__GI___tunables_init [/lib/x86_64-linux-gnu/ld-2.27.so]
+ 21,904  /build/glibc-OTsEL5/glibc-2.27/elf/dl-lookup.c:_dl_lookup_symbol_x [/lib/x86_64-linux-gnu/ld-2.27.so]
+ 18,789  /build/glibc-OTsEL5/glibc-2.27/elf/../sysdeps/x86_64/dl-machine.h:_dl_relocate_object
+ 11,341  /build/glibc-OTsEL5/glibc-2.27/string/../sysdeps/x86_64/strcmp.S:strcmp [/lib/x86_64-linux-gnu/ld-2.27.so]
+ 10,250  /build/glibc-OTsEL5/glibc-2.27/elf/do-rel.h:_dl_relocate_object
+  6,709  /build/glibc-OTsEL5/glibc-2.27/stdlib/random_r.c:srandom_r [/lib/x86_64-linux-gnu/libc-2.27.so]
+  6,245  /build/glibc-OTsEL5/glibc-2.27/elf/dl-tunables.h:__GI___tunables_init
+  5,300  /build/glibc-OTsEL5/glibc-2.27/stdlib/rand.c:rand [/lib/x86_64-linux-gnu/libc-2.27.so]
+  2,836  /build/glibc-OTsEL5/glibc-2.27/elf/dl-version.c:_dl_check_map_versions [/lib/x86_64-linux-gnu/ld-2.27.so]
+  2,632  /build/glibc-OTsEL5/glibc-2.27/elf/dl-misc.c:_dl_name_match_p [/lib/x86_64-linux-gnu/ld-2.27.so]
+  1,887  /build/glibc-OTsEL5/glibc-2.27/elf/dl-cache.c:_dl_cache_libcmp [/lib/x86_64-linux-gnu/ld-2.27.so]
+  1,389  /build/glibc-OTsEL5/glibc-2.27/elf/dl-deps.c:_dl_map_object_deps [/lib/x86_64-linux-gnu/ld-2.27.so]
+  1,243  /build/glibc-OTsEL5/glibc-2.27/elf/dl-load.c:_dl_map_object_from_fd [/lib/x86_64-linux-gnu/ld-2.27.so]
+    996  /build/glibc-OTsEL5/glibc-2.27/libio/fileops.c:_IO_file_overflow@@GLIBC_2.2.5 [/lib/x86_64-linux-gnu/libc-2.27.so]
+    940  /build/glibc-OTsEL5/glibc-2.27/stdio-common/printf_fp.c:__printf_fp_l [/lib/x86_64-linux-gnu/libc-2.27.so]
+    934  /build/glibc-OTsEL5/glibc-2.27/elf/rtld.c:dl_main [/lib/x86_64-linux-gnu/ld-2.27.so]
+    916  /build/glibc-OTsEL5/glibc-2.27/elf/dl-load.c:_dl_map_object [/lib/x86_64-linux-gnu/ld-2.27.so]
+    893  /build/glibc-OTsEL5/glibc-2.27/elf/dl-load.c:open_verify.constprop.7 [/lib/x86_64-linux-gnu/ld-2.27.so]
+    893  /build/glibc-OTsEL5/glibc-2.27/elf/get-dynamic-info.h:_dl_map_object_from_fd
+    886  /build/glibc-OTsEL5/glibc-2.27/malloc/malloc.c:ptmalloc_init.part.0
+    773  /build/glibc-OTsEL5/glibc-2.27/elf/dl-object.c:_dl_new_object [/lib/x86_64-linux-gnu/ld-2.27.so]
+    768  /build/glibc-OTsEL5/glibc-2.27/elf/dl-load.c:open_path [/lib/x86_64-linux-gnu/ld-2.27.so]
+    767  /build/glibc-OTsEL5/glibc-2.27/string/../sysdeps/x86/cacheinfo.c:intel_check_word.isra.0 [/lib/x86_64-linux-gnu/libc-2.27.so]
+    715  /build/glibc-OTsEL5/glibc-2.27/elf/dl-cache.c:_dl_load_cache_lookup [/lib/x86_64-linux-gnu/ld-2.27.so]
+    614  /build/glibc-OTsEL5/glibc-2.27/elf/dl-sort-maps.c:_dl_sort_maps [/lib/x86_64-linux-gnu/ld-2.27.so]
+    607  /build/glibc-OTsEL5/glibc-2.27/elf/dl-reloc.c:_dl_relocate_object [/lib/x86_64-linux-gnu/ld-2.27.so]
+    582  /build/glibc-OTsEL5/glibc-2.27/string/../bits/stdlib-bsearch.h:intel_check_word.isra.0
+    575  /build/glibc-OTsEL5/glibc-2.27/elf/dl-hwcaps.c:_dl_important_hwcaps [/lib/x86_64-linux-gnu/ld-2.27.so]
+    544  /build/glibc-OTsEL5/glibc-2.27/elf/dl-minimal.c:malloc [/lib/x86_64-linux-gnu/ld-2.27.so]
+    543  /build/glibc-OTsEL5/glibc-2.27/elf/../elf/dl-sysdep.c:_dl_sysdep_start [/lib/x86_64-linux-gnu/ld-2.27.so]
+    512  /build/glibc-OTsEL5/glibc-2.27/string/../sysdeps/x86_64/multiarch/../strlen.S:strlen [/lib/x86_64-linux-gnu/ld-2.27.so]
+    490  /build/glibc-OTsEL5/glibc-2.27/elf/dl-environ.c:_dl_next_ld_env_entry [/lib/x86_64-linux-gnu/ld-2.27.so]
+    463  /build/glibc-OTsEL5/glibc-2.27/string/../sysdeps/x86_64/multiarch/memset-vec-unaligned-erms.S:memset [/lib/x86_64-linux-gnu/ld-2.27.so]
+    389  /build/glibc-OTsEL5/glibc-2.27/elf/../sysdeps/x86_64/dl-machine.h:_dl_start
+    388  /build/glibc-OTsEL5/glibc-2.27/string/../sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S:mempcpy [/lib/x86_64-linux-gnu/ld-2.27.so]
+    348  /build/glibc-OTsEL5/glibc-2.27/misc/../sysdeps/unix/sysv/linux/mmap64.c:mmap [/lib/x86_64-linux-gnu/ld-2.27.so]
+    330  /build/glibc-OTsEL5/glibc-2.27/elf/../elf/dl-tls.c:_dl_allocate_tls_storage [/lib/x86_64-linux-gnu/ld-2.27.so]
+    328  /build/glibc-OTsEL5/glibc-2.27/libio/genops.c:_IO_default_xsputn [/lib/x86_64-linux-gnu/libc-2.27.so]
+    327  /build/glibc-OTsEL5/glibc-2.27/elf/get-dynamic-info.h:dl_main
+    325  /build/glibc-OTsEL5/glibc-2.27/elf/dl-tunables.c:__tunable_get_val [/lib/x86_64-linux-gnu/ld-2.27.so]
+
+--------------------------------------------------------------------------------
+-- User-annotated source: eigenCode.c
+--------------------------------------------------------------------------------
+     Ir 
+
+-- line 2 ----------------------------------------
+      .  #include <stdlib.h>
+      .  #include <time.h>
+      .  #include <math.h>
+      .  
+      .  #define INF 100000
+      .  
+      .  const int n = 50;
+      .  
+     13  int main() {
+      .  
+      3      srand(1);
+  6,726  => /build/glibc-OTsEL5/glibc-2.27/stdlib/random.c:srand (1x)
+    131      double cur_lambda, b[n], v[n], m[n][n];
+      .  
+    205      for(int i = 0; i < n; ++i) {
+      .      
+    850          int random_b = rand() % INF;
+  2,641  => /build/glibc-OTsEL5/glibc-2.27/stdlib/rand.c:rand (50x)
+    250          b[i] = random_b;
+      .      
+  5,400          for(int j = i; j < n; ++j) {
+ 20,400              int random = (rand() % INF) + 1;
+ 67,500  => /build/glibc-OTsEL5/glibc-2.27/stdlib/rand.c:rand (1275x)
+      .      
+      .              // random [0, 1]
+ 40,800              m[i][j] = m[j][i] = 1.0 / random;
+      .          }
+      .      }
+      .  
+      .      // Print matrix
+      .      // for(int i = 0; i < n; ++i) {
+      .      //     for(int j = 0; j < n; ++j) {
+      .      //         printf("%lf ", m[i][j]);
+      .      //     }
+      .      //     printf("\n");
+      .      // }
+      .  
+      .      // cur_lambda
+      2      double sum = 0;
+    205      for(int i = 0; i < n; ++i) {
+    600          sum += b[i] * b[i];
+      .      }
+      7      cur_lambda = sqrtl(sum);
+      8  => /build/glibc-OTsEL5/glibc-2.27/math/w_sqrtl_compat.c:sqrtl (1x)
+    205      for(int i = 0; i < n; ++i) {
+    450          v[i] = b[i] / cur_lambda;
+      .      }
+    205      for(int i = 0; i < n; ++i) {
+      .          
+    100          double addition = 0;
+      .          
+ 10,250          for(int j = 0; j < n; ++j) {
+      .              // addition += m[j][i] * v[j]; 
+ 45,000              addition += m[i][j] * v[j]; 
+      .          }
+      .  
+    250          b[i] = addition;
+      .      }
+      .  
+     11      while(1) {
+      .          double new_lambda;
+      .  
+     24          double add = 0;
+  2,460          for(int i = 0; i < n; ++i) {
+  7,200              add += b[i] * b[i];
+      .          }
+     84          new_lambda = sqrtl(add);
+     96  => /build/glibc-OTsEL5/glibc-2.27/math/w_sqrtl_compat.c:sqrtl (12x)
+      .          
+  2,460          for(int i = 0; i < n; ++i) {
+  5,400              v[i] = b[i] / new_lambda;
+      .          }
+  2,460          for(int i = 0; i < n; ++i) {
+      .              
+  1,200              double addition = 0;
+      .              
+123,000              for(int j = 0; j < n; ++j) {
+      .                  // addition += m[j][i] * v[j];  
+540,000                  addition += m[i][j] * v[j]; 
+      .              }
+      .  
+  3,000              b[i] = addition;
+      .          }
+      .  
+     84          if(fabs(new_lambda - cur_lambda) < 1e-6) {
+      1              break;
+      .          }
+      .          else {
+     22              cur_lambda = new_lambda;
+      .          }
+      .      }
+      .  
+      7      printf("Largest Eigen Value %lf\n", cur_lambda);
+ 67,234  => /build/glibc-OTsEL5/glibc-2.27/stdio-common/printf.c:printf (1x)
+      .  
+      2      return 0;
+     11  }
+--------------------------------------------------------------------------------
+Ir 
+--------------------------------------------------------------------------------
+73  percentage of events annotated
+

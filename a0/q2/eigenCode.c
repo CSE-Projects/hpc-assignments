@@ -5,7 +5,7 @@
 
 #define INF 100000
 
-const int n = 3;
+const int n = 50;
 
 int main() {
 
@@ -26,12 +26,12 @@ int main() {
     }
 
     // Print matrix
-    for(int i = 0; i < n; ++i) {
-        for(int j = 0; j < n; ++j) {
-            printf("%lf ", m[i][j]);
-        }
-        printf("\n");
-    }
+    // for(int i = 0; i < n; ++i) {
+    //     for(int j = 0; j < n; ++j) {
+    //         printf("%lf ", m[i][j]);
+    //     }
+    //     printf("\n");
+    // }
 
     // cur_lambda
     double sum = 0;
@@ -47,8 +47,8 @@ int main() {
         double addition = 0;
         
         for(int j = 0; j < n; ++j) {
-            // addition += m[j][i] * v[j]; 
-            addition += m[i][j] * v[j]; 
+            addition += m[j][i] * v[j]; 
+            // addition += m[i][j] * v[j]; 
         }
 
         b[i] = addition;
@@ -71,8 +71,8 @@ int main() {
             double addition = 0;
             
             for(int j = 0; j < n; ++j) {
-                // addition += m[j][i] * v[j];  
-                addition += m[i][j] * v[j]; 
+                addition += m[j][i] * v[j];  
+                // addition += m[i][j] * v[j]; 
             }
 
             b[i] = addition;
@@ -86,7 +86,7 @@ int main() {
         }
     }
 
-    printf("%lf", cur_lambda);
+    printf("Largest Eigen Value %lf\n", cur_lambda);
 
     return 0;
 }

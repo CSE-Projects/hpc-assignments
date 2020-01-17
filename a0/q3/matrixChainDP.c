@@ -33,7 +33,7 @@ int matrixChainDP(int array[], int low, int high) {
 } 
   
 int main() {
-    srand(1);
+    srand(2);
     int array[N];
     for(int i = 0; i < N; ++i) {
         array[i] = rand() % 100;
